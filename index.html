@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>blank</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <script src="https://pixijs.download/release/pixi.js"></script>
+    <script type="module">
+    (async () =>
+{
+    // Create a PixiJS application.
+    const app = new PIXI.Application();
+
+    // Intialize the application.
+    await app.init({ background: '#1099bb', resizeTo: window });
+
+    // Then adding the application's canvas to the DOM body.
+    document.body.appendChild(app.canvas);
+
+    // Load the bunny texture.
+    const texture = await PIXI.Assets.load('https://pixijs.com/assets/bunny.png');
+
+    // Create a new Sprite from an image path
+    const bunny = new PIXI.Sprite(texture);
+
+    // Add to stage
+    app.stage.addChild(bunny);
+
+    // Center the sprite's anchor point
+    bunny.anchor.set(0.5);
+
+    // Move the sprite to the center of the screen
+    bunny.x = app.screen.width / 2;
+    bunny.y = app.screen.height / 2;
+})();
+  </script>
+</body>
+</html>
