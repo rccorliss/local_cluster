@@ -1,3 +1,7 @@
+//import all from lcSite.js
+import * as lcSite from './lcSite.js';
+
+
 (async () =>
     {
         // Create a PixiJS application.
@@ -11,8 +15,15 @@
         // Enable interactivity!
         app.stage.eventMode = 'static';
     
-        // Make sure the whole canvas area is interactive, not just the circle.
+        // Make sure the whole canvas area is interactive, not just the elements.
         app.stage.hitArea = app.screen;
+
+        //create 100 sites with random x y locations inside the viewable area, making sure they do not overlap the edge of the screen (given their radius)
+        let sites=lcSite.createSites(100, lcSite.radius, app.screen.width-lcSite.radius, lcSite.radius, app.screen.height-lcSite.radius);
+
+
+        //add all the sites to the stage
+        sites.forEach(site=>app.stage.addChild(site.drawable));
         
         // Load the bunny texture.
         const texture = await PIXI.Assets.load('https://pixijs.com/assets/bunny.png');
