@@ -42,7 +42,7 @@
     
         app.ticker.add((time) => {
             if (!bunny.clicked){
-            bunny.rotation += 0.1 * time.deltaTime;
+            bunny.rotation += 0.01 * time.deltaTime;
             }
             if (bunny.destination){
             let dx=bunny.destination.x-bunny.x;
@@ -57,6 +57,7 @@
                 bunny.x=bunny.destination.x;
                 bunny.y=bunny.destination.y;
                 bunny.destination=null;
+                bunny.clicked=false;
             }
             }
         });
@@ -69,8 +70,11 @@
         });
     
     
-        function bunnyClick()
+        function bunnyClick(e)
         {
+        if (!bunny.clicked){//if the bunny wasn't clicked before, this consumes the event
+                    e.stopPropagation();
+}
             bunny.clicked=!bunny.clicked;
         }
         function stageClick(e)
