@@ -83,6 +83,7 @@ import * as lcSite from './lcSite.js';
     
         function bunnyClick(e)
         {
+            e.currentTarget.parent.removeChild(e.currentTarget);
         if (!bunny.clicked){//if the bunny wasn't clicked before, this consumes the event
                     e.stopPropagation();
 }
