@@ -66,7 +66,7 @@ export class Site {
             .fill(0xaaaaaa);
 
         info.interactive=true;
-        info.zIndex=10;
+        info.zIndex=100;
         info.addChild(box);
         info.addChild(text);
         info.addChild(text2);
