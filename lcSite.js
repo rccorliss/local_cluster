@@ -39,6 +39,11 @@ export class Site {
         this.drawable.on('pointerdown', this.click.bind(this));
     }
     click(){
+        if (this.drawable.children.some(child=>child.rname=='info')){
+            //remove the info panel if one is already there
+            this.drawable.removeChild(this.drawable.children.find(child=>child.rname=='info'));
+            return;
+        }
         //create a small gray square near, but not covering, the site.  The square should have two lines of text, one with the x and y coordinates of the site, and the other with the status of the site.
         let x=this.x;
         let y=this.y;
